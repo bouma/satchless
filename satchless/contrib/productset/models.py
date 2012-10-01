@@ -27,7 +27,7 @@ class ProductSetItem(models.Model):
     productset = models.ForeignKey(ProductSet, related_name='items')
     #variant = models.ForeignKey(Variant)
     variant = models.ForeignKey(products.models.Variant,
-                                editable=False, related_name='+')
+                                editable=True, related_name='+')
     sort = models.PositiveIntegerField()
 
     def __unicode__(self):
