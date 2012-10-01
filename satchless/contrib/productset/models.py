@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from ...product.models import Variant
+#from ...product.models import Variant
+import products.models
 from ...django_images.models import Image
 
 class ProductSet(models.Model):
@@ -24,7 +25,9 @@ class ProductSet(models.Model):
 
 class ProductSetItem(models.Model):
     productset = models.ForeignKey(ProductSet, related_name='items')
-    variant = models.ForeignKey(Variant)
+    #variant = models.ForeignKey(Variant)
+    variant = models.ForeignKey(products.models.Variant,
+                                editable=False, related_name='+')
     sort = models.PositiveIntegerField()
 
     def __unicode__(self):
